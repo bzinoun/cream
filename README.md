@@ -9,15 +9,16 @@ Cream is a jhipster 3 monilitic application based on **SpringBoot - AngularJS 1*
 
 Requirement 
 -------------------
-JDK 8
-MysqlDB 
-maven >= 3.0
-bower
-grunt
+JDK 8 <br/>
+MysqlDB <br/>
+maven >= 3.0<br/>
+bower<br/>
+grunt<br/>
  
 
 To run 
--------------------
-> **cmd :** bower install 
-> **cmd :** mvn clean install 
-> **cmd :** mvn 
+---------
+
+> **cmd :** bower install <br/>
+> **cmd :** mvn clean install <br/>
+> **cmd :** mvn <br/>
