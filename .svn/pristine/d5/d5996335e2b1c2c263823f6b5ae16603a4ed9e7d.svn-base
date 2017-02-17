@@ -1,0 +1,114 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()"
+	show-validation>
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			aria-hidden="true" ng-click="clear()">&times;</button>
+		<h4 class="modal-title" id="myTacheLabel"
+			translate="creamApp.tache.home.createOrEditLabel">Create or edit
+			a Tache</h4>
+	</div>
+	<div class="modal-body">
+		<jh-alert-error></jh-alert-error>
+
+		<div class="row">
+
+
+			<div class="form-group col-md-6">
+				<label class="control-label" translate="creamApp.tache.sujet"
+					for="field_sujet">Sujet</label> <input type="text"
+					class="form-control" name="sujet" id="field_sujet"
+					ng-model="tache.sujet" required />
+				<div ng-show="editForm.sujet.$invalid">
+					<p class="help-block" ng-show="editForm.sujet.$error.required"
+						translate="entity.validation.required">This field is required.
+					</p>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="control-label" translate="creamApp.tache.description"
+					for="field_description">Description</label> <input type="text"
+					class="form-control" name="description" id="field_description"
+					ng-model="tache.description" />
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="form-group col-md-6">
+				<label class="control-label" translate="creamApp.tache.dateDebut"
+					for="field_dateDebut">DateDebut</label>
+				<div class="input-group">
+					<input id="field_dateDebut" type="text" class="form-control"
+						uib-datepicker-popup="{{dateformat}}" ng-model="tache.dateDebut"
+						is-open="datePickerForDateDebut.status.opened" /> <span
+						class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="datePickerForDateDebutOpen($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="control-label" translate="creamApp.tache.dateFin"
+					for="field_dateFin">DateFin</label>
+				<div class="input-group">
+					<input id="field_dateFin" type="text" class="form-control"
+						uib-datepicker-popup="{{dateformat}}" ng-model="tache.dateFin"
+						is-open="datePickerForDateFin.status.opened" /> <span
+						class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="datePickerForDateFinOpen($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="form-group col-md-6">
+				<label class="control-label" translate="creamApp.tache.type"
+					for="field_type">Type</label> <select class="form-control"
+					name="type" ng-model="tache.type" id="field_type" required>
+					<option value="TYPE1" translate="creamApp.TypeTache.TYPE1">TYPE1</option>
+					<option value="TYPE2" translate="creamApp.TypeTache.TYPE2">TYPE2</option>
+					<option value="TYPE3" translate="creamApp.TypeTache.TYPE3">TYPE3</option>
+					<option value="TYPE4" translate="creamApp.TypeTache.TYPE4">TYPE4</option>
+				</select>
+				<div ng-show="editForm.type.$invalid">
+					<p class="help-block" ng-show="editForm.type.$error.required"
+						translate="entity.validation.required">This field is required.
+					</p>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label translate="creamApp.tache.statutTache"
+					for="field_statutTache">statutTache</label> <select
+					class="form-control" id="field_statutTache" name="statutTache"
+					ng-model="tache.statutTacheId"
+					ng-options="refStatutTache.id as refStatutTache.libelle for refStatutTache in refstatuttaches">
+					<option value=""></option>
+				</select>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal"
+			ng-click="clear()">
+			<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+				translate="entity.action.cancel">Cancel</span>
+		</button>
+		<button type="submit" ng-disabled="editForm.$invalid || isSaving"
+			class="btn btn-primary">
+			<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+				translate="entity.action.save">Save</span>
+		</button>
+	</div>
+</form>

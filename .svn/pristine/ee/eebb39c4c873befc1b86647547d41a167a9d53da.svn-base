@@ -1,0 +1,71 @@
+<div>
+    <h2 translate="creamApp.perference.home.title">Perferences</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-primary" ui-sref="perference.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="creamApp.perference.home.createLabel">Create a new Perference</span>
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" ng-click="importProspect()">
+                    <span class="glyphicon glyphicon-flash"></span> <span >Import Prospect</span>
+                </button>
+            </div>
+            <div class="col-md-6">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Perference</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sujet"><span translate="creamApp.perference.sujet">Sujet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="creamApp.perference.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateImport"><span translate="creamApp.perference.dateImport">DateImport</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pieceJointe"><span translate="creamApp.perference.pieceJointe">PieceJointe</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="perference in perferences track by perference.id">
+                    <td><a ui-sref="perference.detail({id:perference.id})">{{perference.id}}</a></td>
+                    <td>{{perference.sujet}}</td>
+                    <td>{{perference.description}}</td>
+                    <td>{{perference.dateImport | date:'medium'}}</td>
+                    <td>{{abbreviate(perference.pieceJointe)}} {{perference.pieceJointeContentType}} {{byteSize(perference.pieceJointe)}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="perference.detail({id:perference.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="perference.edit({id:perference.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="perference.delete({id:perference.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

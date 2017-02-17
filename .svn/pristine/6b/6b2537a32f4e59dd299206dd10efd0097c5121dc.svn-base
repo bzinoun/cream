@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="b.zinoun (generated)" id="1453739580902-1">
+      <addColumn tableName="personne">
+         <column name="is_client" type="bit"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="b.zinoun (generated)" id="1453739580902-2">
+      <addColumn tableName="personne">
+         <column name="numero_contrat" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+</databaseChangeLog>

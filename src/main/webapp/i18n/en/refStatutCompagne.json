@@ -1,0 +1,23 @@
+{
+    "creamApp": {
+        "refStatutCompagne" : {
+            "home": {
+                "title": "RefStatutCompagnes",
+                "createLabel": "Create a new RefStatutCompagne",
+                "createOrEditLabel": "Create or edit a RefStatutCompagne"
+            },
+            "created": "A new RefStatutCompagne is created with identifier {{ param }}",
+            "updated": "A RefStatutCompagne is updated with identifier {{ param }}",
+            "deleted": "A RefStatutCompagne is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete RefStatutCompagne {{ id }}?"
+            },
+            "detail": {
+                "title": "RefStatutCompagne"
+            },
+            "code": "Code",
+            "libelle": "Libelle",
+            "compagne": "Compagne"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "creamApp": {
+        "compagne" : {
+            "home": {
+                "title": "Compagnes",
+                "createLabel": "Créer un nouveau Compagne",
+                "createOrEditLabel": "Créer ou éditer un Compagne"
+            },
+            "created": "Un nouveau Compagne a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Compagne avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Compagne avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Compagne {{ id }} ?"
+            },
+            "detail": {
+                "title": "Compagne"
+            },
+            "libelle": "Libelle",
+            "dateDebut": "DateDebut",
+            "dateFin": "DateFin",
+            "prospection": "Prospection",
+            "statutCompagne": "StatutCompagne"
+        }
+    }
+}
+

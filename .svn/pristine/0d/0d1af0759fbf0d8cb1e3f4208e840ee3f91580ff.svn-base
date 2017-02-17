@@ -1,0 +1,90 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPerferenceLabel" translate="creamApp.perference.home.createOrEditLabel">Create or edit a Perference</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="perference.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.perference.sujet" for="field_sujet">Sujet</label>
+            <input type="text" class="form-control" name="sujet" id="field_sujet"
+                    ng-model="perference.sujet"
+                    required />
+            <div ng-show="editForm.sujet.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sujet.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.perference.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="perference.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.perference.dateImport" for="field_dateImport">DateImport</label>
+            <input id="field_dateImport" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="perference.dateImport" is-open="datePickerForDateImport.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateImportOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <div ng-show="editForm.dateImport.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateImport.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateImport.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setPieceJointe($file, perference)">
+            <label class="control-label" translate="creamApp.perference.pieceJointe" for="field_pieceJointe">PieceJointe</label>
+            <div>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{abbreviate(perference.pieceJointe)}} {{perference.pieceJointeContentType}} {{byteSize(perference.pieceJointe)}}</span>
+                    <button ng-click="perference.pieceJointe=null;perference.pieceJointeContentType=null;"
+                            ng-if="perference.pieceJointe"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setPieceJointe($file, perference)" translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="pieceJointe" id="field_pieceJointe"
+                    ng-model="perference.pieceJointe"
+                    required />
+            <input type="hidden" class="form-control" name="pieceJointeContentType" id="field_pieceJointeContentType"
+                    ng-model="perference.pieceJointeContentType" />
+            <div ng-show="editForm.pieceJointe.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.pieceJointe.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

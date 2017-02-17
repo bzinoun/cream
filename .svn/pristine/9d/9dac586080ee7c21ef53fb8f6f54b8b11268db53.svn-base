@@ -1,0 +1,12 @@
+{
+    "creamApp": {
+        "TypeAction" : {
+            "null": "",
+            "APPEL": "APPEL",
+            "REUNION": "REUNION",
+            "ATTENTE": "ATTENTE",
+            "MAIL": "MAIL",
+            "CONCRETISATION": "CONCRETISATION"
+        }
+    }
+}

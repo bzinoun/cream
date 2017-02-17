@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="b.zinoun (generated)" id="1452763570515-1">
+      <addColumn tableName="action">
+         <column name="type_action" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="b.zinoun (generated)" id="1452763570515-2">
+      <addColumn tableName="action">
+         <column name="user" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="b.zinoun (generated)" id="1452763570515-3">
+      <addColumn tableName="prospection">
+         <column name="user" type="varchar(255)"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="b.zinoun (generated)" id="1452763570515-4">
+      <dropColumn columnName="piece_jointe" tableName="action"/>
+   </changeSet>
+   <changeSet author="b.zinoun (generated)" id="1452763570515-5">
+      <dropColumn columnName="piece_jointe_content_type" tableName="action"/>
+   </changeSet>
+   <changeSet author="b.zinoun (generated)" id="1452763570515-6">
+      <dropColumn columnName="type" tableName="action"/>
+   </changeSet>
+</databaseChangeLog>

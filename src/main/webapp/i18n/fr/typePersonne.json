@@ -1,0 +1,10 @@
+{
+    "creamApp": {
+        "TypePersonne" : {
+            "null": "",
+            "SOCIETE": "SOCIETE",
+            "HOMME": "HOMME",
+            "FEMME": "FEMME"
+        }
+    }
+}

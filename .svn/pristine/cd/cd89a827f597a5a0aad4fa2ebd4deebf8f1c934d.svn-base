@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+   <changeSet author="b.zinoun (generated)" id="1453301971157-1">
+      <createTable tableName="perference">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="perferencePK"/>
+         </column>
+         <column name="date_import" type="datetime">
+            <constraints nullable="false"/>
+         </column>
+         <column name="description" type="VARCHAR(255)"/>
+         <column name="piece_jointe" type="BLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="piece_jointe_content_type" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="sujet" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+      </createTable>
+   </changeSet>
+</databaseChangeLog>

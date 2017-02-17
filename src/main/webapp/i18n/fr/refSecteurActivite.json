@@ -1,0 +1,24 @@
+{
+    "creamApp": {
+        "refSecteurActivite" : {
+            "home": {
+                "title": "RefSecteurActivites",
+                "createLabel": "Créer un nouveau RefSecteurActivite",
+                "createOrEditLabel": "Créer ou éditer un RefSecteurActivite"
+            },
+            "created": "Un nouveau RefSecteurActivite a été créé avec l'identifiant {{ param }}",
+            "updated": "Le RefSecteurActivite avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le RefSecteurActivite avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le RefSecteurActivite {{ id }} ?"
+            },
+            "detail": {
+                "title": "RefSecteurActivite"
+            },
+            "code": "Code",
+            "libelle": "Libelle",
+            "personne": "Personne"
+        }
+    }
+}
+

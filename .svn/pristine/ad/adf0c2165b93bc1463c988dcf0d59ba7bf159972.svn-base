@@ -1,0 +1,36 @@
+{
+    "creamApp": {
+        "tache" : {
+            "home": {
+                "title": "Taches",
+                "createLabel": "Créer",
+                "createOrEditLabel": "Créer ou éditer un Tache"
+            },
+            "created": "Un nouveau Tache a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Tache avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Tache avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Tache {{ id }} ?"
+            },
+            "detail": {
+                "title": "Tache"
+            },
+            "sujet": "Sujet",
+            "description": "Description",
+            "dateDebut": "DateDebut",
+            "dateFin": "DateFin",
+            "type": "Type",
+            "pieceJointe": "PieceJointe",
+            "user": "User",
+            "prospection": "Prospection",
+            "action": "Action",
+            "statutTache": "StatutTache",
+            "close": {
+                "title": "Fermer tache ?",
+                "question": "Etes-vous certain de vouloir fermer la Tache ?",
+            	"fermer":" Fermer la tache"
+            }
+        }
+    }
+}
+

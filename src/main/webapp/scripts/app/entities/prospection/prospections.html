@@ -1,0 +1,195 @@
+<section class="content-header">
+	<h4>
+		<i class="fa fa-thumb-tack"></i> Mes prospects
+	</h4>
+</section>
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+		<div class="box box-success">
+			<div class="box-header">
+				<h3 class="box-title">
+					<span translate="creamApp.prospection.home.title">Prospections</span>
+				</h3>
+				<div class="box-tools">
+					<form name="searchForm" class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control" ng-model="searchQuery"
+								id="searchQuery" placeholder="Search">
+						</div>
+						<button class="btn btn-default" ng-click="search()">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+<!-- 						<button class="btn btn-success" ui-sref="prospection.new"> -->
+<!-- 							<span class="glyphicon glyphicon-plus"> </span><span -->
+<!-- 								translate="creamApp.prospection.home.createLabel">Create -->
+<!-- 								a new Prospection</span> -->
+<!-- 						</button> -->
+					</form>
+
+				</div>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+
+				<jh-alert></jh-alert>
+				<table class="table table-hover">
+					<thead>
+						<tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+							<th jh-sort-by="id"><span translate="global.field.id">ID</span>
+								<span class="glyphicon glyphicon-sort"></span></th>
+							<th jh-sort-by="compagneLibelle"><span
+								translate="creamApp.prospection.compagne">compagne</span> <span
+								class="glyphicon glyphicon-sort"></span></th>
+							<!--                     <th jh-sort-by="description"><span translate="creamApp.prospection.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<th jh-sort-by="dateEcheance"><span
+								>Date Echeance</span> <span
+								class="glyphicon glyphicon-sort"></span></th>
+<!-- 							<th jh-sort-by="dateFin"><span -->
+<!-- 								translate="creamApp.prospection.dateFin">DateFin</span> <span -->
+<!-- 								class="glyphicon glyphicon-sort"></span></th> -->
+							<!--                     <th jh-sort-by="immatriculation"><span translate="creamApp.prospection.immatriculation">Immatriculation</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<!--                     <th jh-sort-by="marque"><span translate="creamApp.prospection.marque">Marque</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<!--                     <th jh-sort-by="modele"><span translate="creamApp.prospection.modele">Modele</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<!--                     <th jh-sort-by="usageLibelle"><span translate="creamApp.prospection.usageLibelle">UsageLibelle</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<!--                     <th jh-sort-by="codeUsage"><span translate="creamApp.prospection.codeUsage">CodeUsage</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<!--                     <th jh-sort-by="energie"><span translate="creamApp.prospection.energie">Energie</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<!--                     <th jh-sort-by="anneeVignette"><span translate="creamApp.prospection.anneeVignette">AnneeVignette</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+							<th jh-sort-by="user"><span
+								translate="creamApp.prospection.user">User</span> <span
+								class="glyphicon glyphicon-sort"></span></th>
+							<th jh-sort-by="personneNom"><span
+								translate="creamApp.prospection.personne">personne</span> <span
+								class="glyphicon glyphicon-sort"></span></th>
+							<th jh-sort-by="statutProspectionLibelle"><span
+								translate="creamApp.prospection.statutProspection">statutProspection</span>
+								<span class="glyphicon glyphicon-sort"></span></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							ng-repeat="prospection in prospections track by prospection.id">
+							<td><a ui-sref="prospection.detail({id:prospection.id})">{{prospection.id}}</a></td>
+							<td><a
+								ui-sref="compagne.detail({id:prospection.compagneId})">{{prospection.compagneLibelle}}</a>
+							</td>
+							<!--                     <td>{{prospection.description}}</td> -->
+							<td>{{prospection.dateEcheance | date:'mediumDate'}}</td>
+<!-- 							<td>{{prospection.dateFin | date:'mediumDate'}}</td> -->
+							<!--                     <td>{{prospection.immatriculation}}</td> -->
+							<!--                     <td>{{prospection.marque}}</td> -->
+							<!--                     <td>{{prospection.modele}}</td> -->
+							<!--                     <td>{{prospection.usageLibelle}}</td> -->
+							<!--                     <td>{{prospection.codeUsage}}</td> -->
+							<!--                     <td>{{prospection.energie}}</td> -->
+							<!--                     <td>{{prospection.anneeVignette}}</td> -->
+							<td>{{prospection.user}}</td>
+							<td><a
+								ui-sref="personne.detail({id:prospection.personneId})">{{prospection.personneNom}}</a>
+							</td>
+							<td><span class="label"
+								ng-class="getLabelClass(prospection)">{{prospection.statutProspectionLibelle}}</span>
+							</td>
+							<td>
+								<button type="submit"
+									ui-sref="prospection.detail({id:prospection.id})"
+									class="btn btn-success btn-sm">
+									<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
+										translate="entity.action.view"> View</span>
+								</button>
+<!-- 								<button type="submit" -->
+<!-- 									ui-sref="prospection.edit({id:prospection.id})" -->
+<!-- 									class="btn btn-primary btn-sm"> -->
+<!-- 									<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span -->
+<!-- 										translate="entity.action.edit"> Edit</span> -->
+<!-- 								</button>  -->
+								<!-- 								<button type="submit" --> <!-- 									ui-sref="prospection.delete({id:prospection.id})" -->
+								<!-- 									class="btn btn-danger btn-sm"> --> <!-- 									<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span -->
+								<!-- 										translate="entity.action.delete"> Delete</span> -->
+								<!-- 								</button> -->
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+				<uib-pager total-items="totalItems" ng-model="page"
+					ng-change="loadAll()"></uib-pager>
+
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+
+<div class="row" has-authority="ROLE_QUALIF">
+	<div class="col-xs-12 col-md-12">
+		<div class="box box-success">
+			<div class="box-header">
+				<h3 class="box-title">
+					<span translate="creamApp.prospection.home.title">Prospections
+						à qualifié</span>
+				</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+
+				<table class="table table-hover">
+					<thead>
+						<tr jh-sort="predicate" ascending="reverse"
+							callback="loadAllAqualifie()">
+							<th jh-sort-by="id"><span translate="global.field.id">ID</span>
+								<span class="glyphicon glyphicon-sort"></span></th>
+							<th jh-sort-by="compagneLibelle"><span
+								translate="creamApp.prospection.compagne">compagne</span> <span
+								class="glyphicon glyphicon-sort"></span></th>
+<!-- 							<th jh-sort-by="dateDebut"><span -->
+<!-- 								translate="creamApp.prospection.dateDebut">DateDebut</span> <span -->
+<!-- 								class="glyphicon glyphicon-sort"></span></th> -->
+<!-- 							<th jh-sort-by="dateFin"><span -->
+<!-- 								translate="creamApp.prospection.dateFin">DateFin</span> <span -->
+<!-- 								class="glyphicon glyphicon-sort"></span></th> -->
+							<th jh-sort-by="personneNom"><span
+								translate="creamApp.prospection.personne">personne</span> <span
+								class="glyphicon glyphicon-sort"></span></th>
+							<th jh-sort-by="statutProspectionLibelle"><span
+								translate="creamApp.prospection.statutProspection">statutProspection</span>
+								<span class="glyphicon glyphicon-sort"></span></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							ng-repeat="prospection in prospectionsAqualifie track by prospection.id">
+							<td><a ui-sref="prospection.detail({id:prospection.id})">{{prospection.id}}</a></td>
+							<td><a
+								ui-sref="compagne.detail({id:prospection.compagneId})">{{prospection.compagneLibelle}}</a>
+							</td>
+<!-- 							<td>{{prospection.dateDebut | date:'mediumDate'}}</td> -->
+<!-- 							<td>{{prospection.dateFin | date:'mediumDate'}}</td> -->
+							<td><a
+								ui-sref="personne.detail({id:prospection.personneId})">{{prospection.personneNom}}</a>
+							</td>
+							<td><span class="label"
+								ng-class="getLabelClass(prospection)">{{prospection.statutProspectionLibelle}}</span>
+							</td>
+							<td>
+								<button type="submit"
+									ui-sref="prospection.take({id:prospection.id})"
+									class="btn btn-primary btn-sm">
+									<i class="fa fa-unlock"></i></span>&nbsp;
+								</button>
+							</td>
+						</tr>
+					</tbody>
+
+				</table>
+				<uib-pager total-items="totalItemsAqualifie" ng-model="page"
+					ng-change="loadAllAqualifie()"></uib-pager>
+
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>

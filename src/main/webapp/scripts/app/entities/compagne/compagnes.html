@@ -1,0 +1,73 @@
+	<div class="box box-success">
+		<div class="box-header">
+			<h3 class="box-title">
+				<i class="fa fa-bullhorn"></i> <span translate="creamApp.compagne.home.title">Compagnes</span>
+			</h3>
+							<div class="box-tools">
+
+					<form name="searchForm" class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control" ng-model="searchQuery"
+								id="searchQuery" placeholder="Search">
+						</div>
+						<button class="btn btn-default" ng-click="search()">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+						<button class="btn btn-success" ui-sref="compagne.new">
+							<span class="glyphicon glyphicon-plus"> </span><span>CREE </span>
+						</button>
+					</form>
+
+				</div>
+		</div>
+		<div class="box-body"> 
+		
+    <jh-alert></jh-alert>
+
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="libelle"><span translate="creamApp.compagne.libelle">Libelle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateDebut"><span translate="creamApp.compagne.dateDebut">DateDebut</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateFin"><span translate="creamApp.compagne.dateFin">DateFin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statutCompagneLibelle"><span translate="creamApp.compagne.statutCompagne">statutCompagne</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="compagne in compagnes track by compagne.id">
+                    <td><a ui-sref="compagne.detail({id:compagne.id})">{{compagne.id}}</a></td>
+                    <td>{{compagne.libelle}}</td>
+                        <td>{{compagne.dateDebut | date:'mediumDate'}}</td>
+                        <td>{{compagne.dateFin | date:'mediumDate'}}</td>
+                    <td>
+                        <a ui-sref="refStatutCompagne.detail({id:compagne.statutCompagneId})">{{compagne.statutCompagneLibelle}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="compagne.detail({id:compagne.id})"
+                                class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="compagne.edit({id:compagne.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+<!--                         <button type="submit" -->
+<!--                                 ui-sref="compagne.delete({id:compagne.id})" -->
+<!--                                 class="btn btn-danger btn-sm"> -->
+<!--                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span> -->
+<!--                         </button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
+</div>
+
+    

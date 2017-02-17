@@ -1,0 +1,24 @@
+{
+    "creamApp": {
+        "perference" : {
+            "home": {
+                "title": "Perferences",
+                "createLabel": "Create a new Perference",
+                "createOrEditLabel": "Create or edit a Perference"
+            },
+            "created": "A new Perference is created with identifier {{ param }}",
+            "updated": "A Perference is updated with identifier {{ param }}",
+            "deleted": "A Perference is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Perference {{ id }}?"
+            },
+            "detail": {
+                "title": "Perference"
+            },
+            "sujet": "Sujet",
+            "description": "Description",
+            "dateImport": "DateImport",
+            "pieceJointe": "PieceJointe"
+        }
+    }
+}

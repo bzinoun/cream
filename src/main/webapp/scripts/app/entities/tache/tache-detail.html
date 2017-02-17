@@ -1,0 +1,189 @@
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-check"></i> <span translate="creamApp.tache.detail.title">Tache</span> {{tache.sujet}}
+			</h3>
+		</div>
+		<div class="panel-body"> 
+        
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.sujet">Sujet</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tache.sujet}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tache.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.dateDebut">DateDebut</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tache.dateDebut | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.dateFin">DateFin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tache.dateFin | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.type">Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'creamApp.TypeTache.' + tache.type}}">{{tache.type}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.pieceJointe">PieceJointe</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tache.pieceJointe}}</span>
+                    <div>{{tache.pieceJointeContentType}}  {{byteSize(tache.pieceJointe)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.user">User</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{tache.user}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.prospection">prospection</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="prospection.detail({id:tache.prospectionId})">{{tache.prospectionSujet}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.tache.statutTache">statutTache</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="refStatutTache.detail({id:tache.statutTacheId})">{{tache.statutTacheLibelle}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+	<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+			<h3 class="panel-title">
+				<i class="fa fa-thumb-tack"></i> <span translate="creamApp.action.home.title">Actions</span>
+			</h3>			</h3>
+		</div>
+		<div class="panel-body"> 
+
+                    <button class="btn btn-primary" ui-sref="tache.detail.action_new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="creamApp.action.home.createLabel">Create a new Action</span>
+                </button>
+   
+   
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sujet"><span translate="creamApp.action.sujet">Sujet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="creamApp.action.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateDebut"><span translate="creamApp.action.dateDebut">DateDebut</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateFin"><span translate="creamApp.action.dateFin">DateFin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeAction"><span translate="creamApp.action.typeAction">TypeAction</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user"><span translate="creamApp.action.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tacheSujet"><span translate="creamApp.action.tache">tache</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="action in tache.actions track by action.id">
+                    <td><a ui-sref="action.detail({id:action.id})">{{action.id}}</a></td>
+                    <td>{{action.sujet}}</td>
+                    <td>{{action.description}}</td>
+                        <td>{{action.dateDebut | date:'mediumDate'}}</td>
+                        <td>{{action.dateFin | date:'mediumDate'}}</td>
+                    <td translate="{{'creamApp.TypeAction.' + action.typeAction}}">{{action.typeAction}}</td>
+                    <td>{{action.user}}</td>
+                    <td>
+                        <a ui-sref="tache.detail({id:action.tacheId})">{{action.tacheSujet}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="action.detail({id:action.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+    </div>
+        <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+    </div>
+    </div>   
+    	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+			<h3 class="panel-title">
+				<i class="fa fa-thumb-tack"></i> <span translate="creamApp.action.home.title">Actions</span>
+			</h3>			</h3>
+		</div>
+		<div class="panel-body">  
+ <ul class="timeline">
+    <li ng-repeat="action in tache.actions track by action.id">
+        <!-- timeline icon -->
+        <i ng-if = "$even" class="fa fa-envelope bg-blue"></i>
+        <i ng-if = "$odd" class="fa fa-comments bg-yellow"></i>
+        <div class="timeline-item">
+            <span class="time"><i class="fa fa-clock-o"></i> {{action.dateDebut | date:'mediumDate'}}</span>
+            <h3 class="timeline-header"><b>{{action.sujet}}</b></h3>
+
+            <div class="timeline-body">
+                {{action.description}}
+            </div>
+       
+       <li>
+              <i class="fa fa-clock-o bg-gray"></i>
+            </li>
+        </div>
+    </li>
+    <!-- END timeline item -->
+
+</ul>
+</div>
+</div>

@@ -1,0 +1,25 @@
+{
+    "creamApp": {
+        "perference" : {
+            "home": {
+                "title": "Perferences",
+                "createLabel": "Créer un nouveau Perference",
+                "createOrEditLabel": "Créer ou éditer un Perference"
+            },
+            "created": "Un nouveau Perference a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Perference avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Perference avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Perference {{ id }} ?"
+            },
+            "detail": {
+                "title": "Perference"
+            },
+            "sujet": "Sujet",
+            "description": "Description",
+            "dateImport": "DateImport",
+            "pieceJointe": "PieceJointe"
+        }
+    }
+}
+

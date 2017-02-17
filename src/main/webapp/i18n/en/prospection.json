@@ -1,0 +1,40 @@
+{
+    "creamApp": {
+        "prospection" : {
+            "home": {
+                "title": "Prospections",
+                "createLabel": "Create a new Prospection",
+                "createOrEditLabel": "Create or edit a Prospection"
+            },
+            "created": "A new Prospection is created with identifier {{ param }}",
+            "updated": "A Prospection is updated with identifier {{ param }}",
+            "deleted": "A Prospection is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Prospection {{ id }}?"
+            },
+            "take": {
+                "question": "Are you sure you want to take the Prospect ?",
+                "title": "Confirm affectation ?"
+            },
+            "detail": {
+                "title": "Prospection"
+            },
+           "sujet": "Sujet",
+            "description": "Description",
+            "dateDebut": "Date Debut",
+            "dateFin": "Date Fin",
+            "immatriculation": "Immatriculation",
+            "marque": "Marque",
+            "modele": "Modele",
+            "usageLibelle": "Usage",
+            "codeUsage": "CodeUsage",
+            "energie": "Energie",
+            "anneeVignette": "Annee Vignette",
+            "user": "User",
+            "personne": "Personne",
+            "compagne": "Compagne",
+            "tache": "Tache",
+            "statutProspection": "Statut"
+        }
+    }
+}

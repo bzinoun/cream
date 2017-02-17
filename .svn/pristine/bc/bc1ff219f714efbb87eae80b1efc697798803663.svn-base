@@ -1,0 +1,252 @@
+
+<div class="row">
+	<div class="col-md-4">
+
+		<!-- Profile Image -->
+		<div class="box box-success">
+			<div class="box-body box-profile">
+				<div ng-if="personne.client" class="flag">
+					<h2>Client</h2>
+				</div>
+				<img class="profile-user-img img-responsive img-circle"
+					src="assets/images/user.png" alt="User profile picture"
+					data-pin-nopin="true">
+
+				<h3 class="profile-username text-center">{{personne.nom}}
+					{{personne.prenom}}</h3>
+
+				<p class="text-muted text-center">
+					CIN : <strong>{{personne.numeroCIN}}</strong>
+				</p>
+
+				<hr>
+				<span><i class="fa fa-phone margin-r-5"></i> Telephone : </span> <strong>{{personne.telephone}}</strong>
+				<hr>
+				<span><i class="fa fa-calendar margin-r-5"></i> Date
+					naissance : </span> <strong>{{personne.dateNaissance |
+					date:'mediumDate'}}</strong>
+				<hr>
+				<span><i class="fa fa-tag margin-r-5"></i> Numero Permis : </span> <strong>{{personne.numeroPermis
+					}}</strong>
+				<hr>
+				<span><i class="fa fa-tag margin-r-5"></i> Ville : </span> <strong>{{personne.ville
+					}}</strong>
+				<hr>
+
+				<button type="submit" ui-sref="personne.detail({id:personne.id})"
+					class="btn btn-success btn-xs">
+					<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
+						translate="entity.action.view"> View</span>
+				</button>
+				<button type="submit"
+					ui-sref="prospection.detail.personne_edit({personneId:personne.id})"
+					class="btn btn-success btn-xs">
+					<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
+						translate="entity.action.edit"> edit</span>
+				</button>
+				<div class="btn-group" has-any-authority="ROLE_AGENT , ROLE_QUALIF">
+					<button type="button" class="btn btn-success btn-xs"
+						ui-sref="prospection.detail.action_new({type:'APPEL'})">
+						<i class="fa fa-phone margin-r-5"></i> Appeler
+					</button>
+					<button type="button" has-any-authority="ROLE_AGENT"
+						class="btn btn-success btn-xs dropdown-toggle"
+						data-toggle="dropdown" aria-expanded="false">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu" has-any-authority="ROLE_AGENT" >
+						<li has-any-authority="ROLE_AGENT"><a
+							ui-sref="prospection.detail.action_new({type:'REUNION'})"><i
+								class="fa fa-suitcase margin-r-5"></i>Réunion</a></li>
+						<li has-any-authority="ROLE_AGENT"><a
+							ui-sref="prospection.detail.action_new({type:'MAIL'})"><i
+								class="fa fa-envelope-o margin-r-5"></i>Mail</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+
+		<!-- Prospect -->
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<i class="fa fa-car margin-r-5"></i>Prospect
+				</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<strong><i class="fa fa-book margin-r-5"></i>
+					{{prospection.sujet}} : </strong>
+				<p class="text-muted">{{prospection.description}}</p>
+				<hr>
+
+				<span><i class="fa fa-calendar margin-r-5"></i> Echeance : </span> <strong>{{prospection.dateEcheance
+					| date:'mediumDate'}}</strong>
+				<hr>
+
+				<span><i class="fa fa-building margin-r-5"></i> Compagnie :
+				</span> <strong>{{prospection.compagnie}}</strong>
+				<hr>
+				<span><i class="fa fa-tag margin-r-5"></i> Immatriculation :
+				</span> <strong>{{prospection.immatriculation}}</strong>
+				<hr>
+				<span><i class="fa fa-flag margin-r-5"></i> Marque : </span> <strong>{{prospection.marque}}</strong>
+				<hr>
+				<span><i class="fa fa-tag margin-r-5"></i> Usage : </span> <strong>{{prospection.usageLibelle}}</strong>
+				<hr>
+				<span><i class="fa fa-bolt margin-r-5"></i> Energie : </span> <strong>{{prospection.energie}}</strong>
+				<hr>
+
+				<button type="submit"
+					ui-sref="prospection.detail({id:prospection.id})"
+					class="btn btn-success btn-xs">
+					<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
+						translate="entity.action.view"> View</span>
+				</button>
+				<button type="submit"
+					ui-sref="prospection.edit({id:prospection.id})"
+					class="btn btn-success btn-xs">
+					<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
+						translate="entity.action.edit"> Edit</span>
+				</button>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success btn-xs"
+						has-any-authority="ROLE_AGENT"
+						ui-sref="prospection.detail.concretiser">
+						<i class="fa fa-check margin-r-5"></i>Concretiser
+					</button>
+					<button type="submit" has-any-authority="ROLE_QUALIF"
+						ui-sref="prospection.edit({id:prospection.id})"
+						class="btn btn-success btn-xs">
+						<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span>
+							QUALIFIER</span>
+					</button>
+					<button type="button"
+						class="btn btn-success btn-xs dropdown-toggle"
+						data-toggle="dropdown" aria-expanded="false">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li has-any-authority="ROLE_QUALIF"><a ui-sref="prospection.unlock">Deverouiller</a></li>
+
+						<li has-any-authority="ROLE_QUALIF , ROLE_AGENT"><a ui-sref="prospection.detail.abondonner">Abandonner</a></li>
+
+					</ul>
+				</div>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+	<!-- /.col -->
+	<div class="col-md-8">
+		<div class="row" ng-if="tache">
+			<div class="  col-md-12">
+				<div class="box box-success">
+					<div class="box-header with-border">
+						<h3 class="box-title">
+							<i class="fa fa-clock-o fa-fw"></i> Tache en cours
+						</h3>
+					</div>
+					<div class="box-body">
+						<div class="row">
+							<div class="col-xs-12 col-sm-8 col-md-12">
+								<ul class="event-list">
+									<li><time>
+											<span class="day">{{tache.dateDebut | date:'dd'}}</span> <span
+												class="month">{{tache.dateDebut | date:'MMMM'}}</span> <span
+												class="year">{{tache.dateDebut | date:'yyyy'}}</span>
+										</time>
+
+										<div class="info">
+											<h2 class="title">{{tache.sujet}}</h2>
+											<p ng-if="tache.description " class="desc">{{tache.description}}</p>
+
+											<ul>
+												<li><span class="fa fa-flag"></span> Statut :
+													{{tache.statutTacheLibelle}}</li>
+												<li><span class="fa fa-tag"></span> Type : <span
+													translate="{{'creamApp.TypeTache.' + tache.type}}">{{tache.type}}</span></li>
+											</ul>
+										</div>
+										<div class="social">
+											<ul>
+												<li class="actionEvent" uib-tooltip="Replanifier"><i
+													class="fa fa-refresh"></i></li>
+												<li class="actionEvent" uib-tooltip="Terminer"
+													ui-sref="prospection.detail.tache_close({idTache:tache.id})"><i
+													class="fa fa-check"></i></li>
+												<li class="actionEvent" uib-tooltip="Liste taches"
+													ui-sref="tache"><i class="fa fa-plus"></i></li>
+											</ul>
+										</div></li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h3 class="box-title">Compagne : {{compagne.libelle}}</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<span><i class="fa fa-calendar margin-r-5"></i> Date debut :
+				</span> <strong>{{compagne.dateDebut | date:'mediumDate'}}</strong>
+				<hr>
+				<span><i class="fa fa-calendar margin-r-5"></i> Date Fin : </span> <strong>{{compagne.dateFin
+					| date:'mediumDate'}}</strong>
+				<hr>
+				<span><i class="fa fa-users margin-r-5"></i> Nombre de
+					prospect : </span> <strong>{{compagne.personnes.length}}</strong>
+				<hr>
+
+				<button type="submit" ui-sref="compagne.detail({id:compagne.id})"
+					class="btn btn-success btn-xs">
+					<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
+						translate="entity.action.view"> View</span>
+				</button>
+
+			</div>
+
+
+		</div>
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h3 class="box-title">Actions</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+
+				<ul class="timeline">
+					<!-- timeline icon <i ng-if="$even" -->
+					<li ng-repeat="action in prospection.actions track by action.id">
+						<i ng-if="$even" class="fa fa-envelope bg-blue"></i> <i
+						ng-if="$odd" class="fa fa-comments bg-yellow"></i>
+						<div class="timeline-item">
+							<span class="time"><i class="fa fa-clock-o"></i>
+								{{action.dateDebut | date:'mediumDate'}}</span>
+							<h3 class="timeline-header">
+								<b>{{action.sujet}}</b><b> : {{action.decision}}</b>
+							</h3>
+
+							<div class="timeline-body">{{action.description}}</div>
+					</li>
+					<li><i class="fa fa-clock-o bg-gray"></i></li>
+					<!-- END timeline item -->
+
+				</ul>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /.col -->
+</div>
+<!-- /.row -->

@@ -1,0 +1,102 @@
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myEvenementLabel" translate="creamApp.evenement.home.createOrEditLabel">Create or edit a Evenement</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="evenement.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.evenement.sujet" for="field_sujet">Sujet</label>
+            <input type="text" class="form-control" name="sujet" id="field_sujet"
+                    ng-model="evenement.sujet"
+                    required />
+            <div ng-show="editForm.sujet.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sujet.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.evenement.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="evenement.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.evenement.dateDebut" for="field_dateDebut">DateDebut</label>
+            <input id="field_dateDebut" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="evenement.dateDebut" is-open="datePickerForDateDebut.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateDebutOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.evenement.dateFin" for="field_dateFin">DateFin</label>
+            <input id="field_dateFin" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="evenement.dateFin" is-open="datePickerForDateFin.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateFinOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.evenement.type" for="field_type">Type</label>
+            <select class="form-control" name="type" ng-model="evenement.type" id="field_type" required>
+                <option value="APPEL" translate="creamApp.TypeEvent.APPEL">APPEL</option>
+                <option value="REUNION" translate="creamApp.TypeEvent.REUNION">REUNION</option>
+                <option value="ATTENTE" translate="creamApp.TypeEvent.ATTENTE">ATTENTE</option>
+                <option value="MAIL" translate="creamApp.TypeEvent.MAIL">MAIL</option>
+            </select>
+            <div ng-show="editForm.type.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.type.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="setPieceJointe($file, evenement)">
+            <label class="control-label" translate="creamApp.evenement.pieceJointe" for="field_pieceJointe">PieceJointe</label>
+            <div>
+                <div class="help-block clearfix">
+                    <span class="pull-left">{{abbreviate(evenement.pieceJointe)}} {{evenement.pieceJointeContentType}} {{byteSize(evenement.pieceJointe)}}</span>
+                    <button ng-click="evenement.pieceJointe=null;evenement.pieceJointeContentType=null;"
+                            ng-if="evenement.pieceJointe"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="file" ngf-select class="btn btn-default btn-block"
+                        ngf-change="setPieceJointe($file, evenement)" translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="pieceJointe" id="field_pieceJointe"
+                    ng-model="evenement.pieceJointe"
+                     />
+            <input type="hidden" class="form-control" name="pieceJointeContentType" id="field_pieceJointeContentType"
+                    ng-model="evenement.pieceJointeContentType" />
+        </div>
+
+        <div class="form-group">
+            <label translate="creamApp.evenement.tache" for="field_tache">tache</label>
+            <select class="form-control" id="field_tache" name="tache" ng-model="evenement.tacheId" ng-options="tache.id as tache.nom for tache in taches" ng-disabled ="'true'">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

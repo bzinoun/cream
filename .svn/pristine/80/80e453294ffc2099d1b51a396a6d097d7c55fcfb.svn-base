@@ -1,0 +1,134 @@
+entity Personne {
+       nom String required,
+       numeroCIN String,
+       rc String,
+       telephone String, 
+       prenom String,
+	   civilite String,
+       typePersonne TypePersonne  , 
+       titre String,
+       dateNaissance LocalDate,
+       numeroPatente String,
+       raisonSociale String,
+       email String,  
+       ville String,
+       dateObtentionPermis LocalDate,
+       numeroPermis String
+}
+entity Client {
+  societe String required,
+  nom String required,
+  prenom String ,
+  titre String ,
+  telephone String , 
+  portable String 
+}
+entity Compagne {
+  libelle String required
+  dateDebut LocalDate,
+  dateFin LocalDate
+
+}
+entity Prospection {
+  sujet String required,
+  description String ,
+  dateDebut LocalDate,
+  dateFin LocalDate,   
+  immatriculation String,
+  marque         String,
+  modele         String,
+  usageLibelle         String,
+  codeUsage      String,
+  energie       String,
+  anneeVignette Integer,
+  user String 
+
+}
+entity Tache {
+  objet String required,
+  description String ,
+  dateDebut LocalDate,
+  dateFin LocalDate,
+  typeTache TypeTache required , 
+  user String 
+}
+entity Action {
+  sujet String required,
+  description String ,
+  dateDebut LocalDate,
+  dateFin LocalDate,
+  typeAction TypeAction  , 
+   user String 
+
+}
+
+entity RefStatutTache {
+  code String required,
+  libelle String required
+}
+entity RefStatutCompagne {
+  code String required,
+  libelle String required
+}
+
+entity RefStatutProspection {
+  code String required,
+  libelle String required
+}
+
+entity RefSituationFamiliale {
+  code String required,
+  libelle String required
+}
+
+entity RefSecteurActivite {
+  code String required,
+  libelle String required
+}
+
+
+
+enum TypeAction {
+    APPEL, REUNION, ATTENTE , MAIL
+  }
+enum TypeTache {
+    HAUTE, BASSE, NORMAL , URGENTE
+  }
+enum TypePersonne {
+    SOCIETE ,HOMME, FEMME
+  }
+
+  
+ relationship ManyToOne {
+ Personne{secteurActivite} to RefSecteurActivite{personne}
+}
+ relationship ManyToOne {
+ Personne{situationFamiliale} to RefSituationFamiliale{personne}
+}
+ relationship ManyToOne {
+ Action{tache} to Tache{action}
+}
+    
+  relationship ManyToOne {
+ Tache{prospection} to Prospection{tache}
+} 
+
+ relationship OneToMany {
+ Compagne{prospection} to Prospection{compagne}
+}
+ relationship OneToMany {
+ Personne{prospection} to Prospection{personne}
+}
+ relationship ManyToOne {
+ Compagne{statutCompagne} to RefStatutCompagne{compagne}
+}
+ relationship ManyToOne {
+ Tache{statutTache} to RefStatutTache{tache}
+}
+ relationship ManyToOne {
+ Prospection{statutProspection} to RefStatutProspection{prospection}
+}
+
+dto Personne ,Compagne,  Prospection , Tache , Action ,RefStatutTache , RefStatutCompagne , RefStatutProspection , RefSituationFamiliale , RefSecteurActivite with mapstruct
+paginate Personne ,Compagne,  Prospection , Tache , Action with pager
+service Personne ,Compagne,  Prospection , Tache , Action   with serviceImpl

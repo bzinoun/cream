@@ -1,0 +1,215 @@
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-check"></i>  <span translate="creamApp.prospection.detail.title">Prospection</span> {{prospection.sujet}}
+			</h3>
+		</div>
+		<div class="panel-body">    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.sujet">Sujet</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.sujet}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.description">Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.dateDebut">DateDebut</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.dateDebut | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.dateFin">DateFin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.dateFin | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.immatriculation">Immatriculation</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.immatriculation}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.marque">Marque</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.marque}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.modele">Modele</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.modele}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.usageLibelle">UsageLibelle</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.usageLibelle}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.codeUsage">CodeUsage</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.codeUsage}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.energie">Energie</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.energie}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.anneeVignette">AnneeVignette</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.anneeVignette}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.user">User</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{prospection.user}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.personne">personne</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="personne.detail({id:prospection.personneId})">{{prospection.personneNom}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.compagne">compagne</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="compagne.detail({id:prospection.compagneId})">{{prospection.compagneLibelle}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.prospection.statutProspection">statutProspection</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="refStatutProspection.detail({id:prospection.statutProspectionId})">{{prospection.statutProspectionLibelle}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+	<div class="col-md-12">
+<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+			<h3 class="panel-title">
+				<i class="fa fa-thumb-tack"></i> <span translate="creamApp.tache.home.title">taches</span>
+			</h3>			</h3>
+		</div>
+		<div class="panel-body"> 
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sujet"><span translate="creamApp.tache.sujet">Sujet</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="description"><span translate="creamApp.tache.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="dateDebut"><span translate="creamApp.tache.dateDebut">DateDebut</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateFin"><span translate="creamApp.tache.dateFin">DateFin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span translate="creamApp.tache.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="pieceJointe"><span translate="creamApp.tache.pieceJointe">PieceJointe</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="user"><span translate="creamApp.tache.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prospectionSujet"><span translate="creamApp.tache.prospection">prospection</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statutTacheLibelle"><span translate="creamApp.tache.statutTache">statutTache</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tache in prospection.taches track by tache.id">
+                    <td><a ui-sref="tache.detail({id:tache.id})">{{tache.id}}</a></td>
+                    <td>{{tache.sujet}}</td>
+<!--                     <td>{{tache.description}}</td> -->
+                        <td>{{tache.dateDebut | date:'mediumDate'}}</td>
+                        <td>{{tache.dateFin | date:'mediumDate'}}</td>
+                    <td translate="{{'creamApp.TypeTache.' + tache.type}}">{{tache.type}}</td>
+<!--                     <td>{{abbreviate(tache.pieceJointe)}} {{tache.pieceJointeContentType}} {{byteSize(tache.pieceJointe)}}</td> -->
+                    <td>{{tache.user}}</td>
+                    <td>
+                        <a ui-sref="prospection.detail({id:tache.prospectionId})">{{tache.prospectionSujet}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="refStatutTache.detail({id:tache.statutTacheId})">{{tache.statutTacheLibelle}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="tache.detail({id:tache.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="tache.edit({id:tache.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="tache.delete({id:tache.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+<!-- <pre>{{ |json}}</pre> -->
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+    </div>
+</div>

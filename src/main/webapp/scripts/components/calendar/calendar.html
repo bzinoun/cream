@@ -1,0 +1,96 @@
+
+<div class="box box-success">
+	<div class="box-header with-border">
+		<h3 class="box-title">
+			<i class="fa fa-clock"></i> <span>Calendar</span>
+		</h3>
+		<div class="box-tools pull-right">
+			<button type="button" class="btn btn-box-tool" ng-click="loadAll()">
+				<i class="fa fa-refresh"></i>
+			</button>
+		</div>
+	</div>
+	<div class="box-body">
+		<jh-alert-error></jh-alert-error>
+
+
+		<div class="row">
+
+			<div class="col-md-7">
+				<div class="box box-solid">
+					<div class="box-body">
+						<div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+
+					</div>
+				</div>
+			</div>
+<!-- 		</div> -->
+<!-- 		<div class="row"> -->
+
+			<div class="col-md-5">
+
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<th></th>
+							<tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+								<th jh-sort-by="sujet"><span
+									translate="creamApp.tache.sujet">Sujet</span> <span
+									class="glyphicon glyphicon-sort"></span></th>
+								<th jh-sort-by="dateDebut"><span
+									translate="creamApp.tache.dateDebut">DateDebut</span> <span
+									class="glyphicon glyphicon-sort"></span></th>
+								<th jh-sort-by="statutTacheLibelle"><span
+									translate="creamApp.tache.statutTache">statutTache</span> <span
+									class="glyphicon glyphicon-sort"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="tache in taches track by tache.id">
+								<td>
+
+
+									<div class="btn-group">
+										<button type="submit" ng-hide="tache.prospectionId"
+											ui-sref="tache.detail({id:tache.id})"
+											class="btn btn-success btn-sm ">
+											<span class="glyphicon glyphicon-eye-open"></span>
+										</button>
+
+										<button type="submit" ng-show="tache.prospectionId"
+											ng-click="goProspectionDetail(tache)"
+											class="btn btn-success btn-sm">
+											<span class="glyphicon glyphicon-eye-open"></span>
+										</button>
+										<button type="button"
+											class="btn btn-success btn-sm dropdown-toggle"
+											data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false">
+											<span class="caret"></span> <span class="sr-only">Toggle
+												Dropdown</span>
+										</button>
+										<ul class="dropdown-menu">
+											<li><a ui-sref="calendar.tache_edit({id:tache.id})"><span
+													class="glyphicon glyphicon-pencil"></span> Edit</a></li>
+											<li><a ui-sref="tache.edit({id:tache.id})"> <span
+													class="glyphicon glyphicon-plus"></span> Planifier
+											</a></li>
+										</ul>
+									</div>
+								</td>
+								<td >{{ tache.sujet | limitTo:15 }}<span uib-popover="{{tache.sujet}}" popover-trigger="focus">...</span></td>
+								<td>{{tache.dateDebut | date:'mediumDate'}}</td>
+								<td><a
+									ui-sref="refStatutTache.detail({id:tache.statutTacheId})">{{tache.statutTacheLibelle}}</a>
+								</td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,84 @@
+<div class="box box-widget">
+	<div class="box-body">
+		<form name="searchForm" class="form-inline ">
+			<div id="custom-search-input">
+				<div class="input-group col-md-12 has-success">
+					<input type="text" class="has-success form-control"
+						placeholder="Search" ng-model="searchQuery" id="searchQuery" /> <span
+						class="input-group-btn">
+
+						<button class="btn btn-success" ng-click="search()" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+						<button class="btn btn-success" ui-sref="personne.new">
+							<span class="glyphicon glyphicon-plus"> </span>
+						</button>
+					</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="box box-widget">
+	<div class="box-body">
+		<jh-alert></jh-alert>
+
+		<div class="col-md-4 "
+			ng-repeat="personne in personnes track by personne.id">
+
+			<!-- Profile Image -->
+			<div class="box box-success">
+				<div class="box-body box-profile">
+					<div ng-if="personne.client" class="flag">
+						<h2>Client</h2>
+					</div>
+					<img class="profile-user-img img-responsive img-circle"
+						src="assets/images/user.png" alt="User profile picture"
+						data-pin-nopin="true">
+
+					<h3 class="profile-username text-center">{{personne.nom}}
+						{{personne.prenom}}</h3>
+
+					<p class="text-muted text-center">
+						CIN : <strong>{{personne.numeroCIN}}</strong>
+					</p>
+
+					<hr>
+					<span><i class="fa fa-phone margin-r-5"></i> Telephone : </span> <strong>{{personne.telephone}}</strong>
+					<hr>
+					<span><i class="fa fa-calendar margin-r-5"></i> Date
+						naissance : </span> <strong>{{personne.dateNaissance |
+						date:'mediumDate'}}</strong>
+					<hr>
+					<span><i class="fa fa-tag margin-r-5"></i> Numero Permis : </span>
+					<strong>{{personne.numeroPermis }}</strong>
+					<hr>
+					<span><i class="fa fa-tag margin-r-5"></i> Ville : </span> <strong>{{personne.ville
+						}}</strong>
+					<hr>
+
+					<button type="submit" ui-sref="personne.detail({id:personne.id})"
+						class="btn btn-success btn-xs">
+						<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
+							translate="entity.action.view"> View</span>
+					</button>
+					<button type="submit" ui-sref="personne.edit({id:personne.id})"
+						class="btn btn-success btn-xs">
+						<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
+							translate="entity.action.edit"> edit</span>
+					</button>
+					<button ng-if="personne.prospectionId" type="submit" ui-sref="prospection.details({id:personne.prospectionId})"
+						class="btn btn-primary btn-xs">
+						<span class="glyphicon glyphicon-globe"></span>&nbsp;<span> vue 360 </span>
+					</button>
+				</div>
+				<!-- /.box-body -->
+			</div>
+			<!-- /.box -->
+		</div>
+		<div class="col-md-12">
+			<uib-pager total-items="totalItems" ng-model="page"
+				ng-change="loadAll()"></uib-pager>
+		</div>
+	</div>
+</div>

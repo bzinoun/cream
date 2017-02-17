@@ -1,0 +1,80 @@
+<div class="box box-success">
+
+	<form name="editForm" role="form" novalidate ng-submit="save()"
+		show-validation>
+
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true" ng-click="clear()">&times;</button>
+			<div class="modal-title " id="myActionLabel">
+				<span class="box-title"> <i class="fa margin-r-5" ng-class="getIconeAction(action.typeAction)"></i><span>Nouvelle
+						action : </span> <span>{{action.sujet}}</span></span>
+			</div>
+		</div>
+		<div class="modal-body">
+			<jh-alert-error></jh-alert-error>
+
+			<div class="col-md-6">
+				<span><i class="fa fa-calendar margin-r-5"></i> Date action :
+					<strong>{{action.dateDebut | date:'mediumDate'}}</strong> </span>
+			</div>
+			<div class="col-md-6">
+
+				<span><i class=" margin-r-5"
+					ng-class="getIconeAction(action.typeAction)"></i> Type action : <strong>{{action.sujet}}</strong></span>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+
+				</div>
+			</div>
+			<div class="col-md-12">
+			<div class="row">
+                <div class="btn-group btn-group-justified" data-toggle="buttons" ng-if="action.typeAction == 'APPEL'">
+                <label class="btn btn-default" ng-click = " initDecision('Intéréssé') ">
+                    <input type="radio" id="q156" name="choixAction" value="Intéréssé"  /> <i class="fa fa-thumbs-o-up" ></i> Intéréssé
+                </label> 
+                <label class="btn btn-default" ng-click = " initDecision('Rapelle') ">
+                    <input type="radio" id="q157" name="choixAction" value="Rapelle" /> <i class="fa fa-history"></i> rapelle
+                </label> 
+                <label class="btn btn-default" ng-click = " initDecision('Injoignable') ">
+                    <input type="radio" id="q158" name="choixAction" value="Injoignable" /> <i class="fa fa-ban"></i> injoignable
+                </label> 
+                <label class="btn btn-default" ng-click = " initDecision('Pas interessé') ">
+                    <input type="radio" id="q159" name="choixAction" value="Pas interessé" /> <i class="fa fa-thumbs-o-down"></i> pas interessé
+                </label> 
+            </div>
+			<div class="row">
+							<div class="col-md-12">
+				
+				<div class="form-group">
+					<label class="control-label" for="field_description"><b>Commentaire
+							: </b></label>
+					<textarea rows="3" class="form-control" name="description"
+						id="field_description" ng-model="action.description" /></textarea>
+					<span class="help-block">Déscriptif ou commantaire de sur
+						l'action.</span>
+				</div>
+				</div>
+				</div>
+
+			</div>
+		</div>
+
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal"
+				ng-click="clear()">
+				<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+					translate="entity.action.cancel">Cancel</span>
+			</button>
+			<button type="submit" ng-disabled="editForm.$invalid || isSaving"
+				class="btn btn-success">
+				<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+					translate="entity.action.save">Save</span>
+			</button>
+		</div>
+	
+	</form>
+</div>

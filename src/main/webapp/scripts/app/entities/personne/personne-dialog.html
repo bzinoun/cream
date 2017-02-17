@@ -1,0 +1,140 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPersonneLabel" translate="creamApp.personne.home.createOrEditLabel">Create or edit a Personne</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="personne.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="personne.nom"
+                    required />
+            <div ng-show="editForm.nom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.numeroCIN" for="field_numeroCIN">NumeroCIN</label>
+            <input type="text" class="form-control" name="numeroCIN" id="field_numeroCIN"
+                    ng-model="personne.numeroCIN"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.rc" for="field_rc">Rc</label>
+            <input type="text" class="form-control" name="rc" id="field_rc"
+                    ng-model="personne.rc"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.telephone" for="field_telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" id="field_telephone"
+                    ng-model="personne.telephone"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                    ng-model="personne.prenom"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.civilite" for="field_civilite">Civilite</label>
+            <input type="text" class="form-control" name="civilite" id="field_civilite"
+                    ng-model="personne.civilite"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.type" for="field_type">Type</label>
+            <select class="form-control" name="type" ng-model="personne.type" id="field_type">
+                <option value="SOCIETE" translate="creamApp.TypePersonne.SOCIETE">SOCIETE</option>
+                <option value="HOMME" translate="creamApp.TypePersonne.HOMME">HOMME</option>
+                <option value="FEMME" translate="creamApp.TypePersonne.FEMME">FEMME</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.titre" for="field_titre">Titre</label>
+            <input type="text" class="form-control" name="titre" id="field_titre"
+                    ng-model="personne.titre"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.dateNaissance" for="field_dateNaissance">DateNaissance</label>
+            <input id="field_dateNaissance" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="personne.dateNaissance" is-open="datePickerForDateNaissance.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateNaissanceOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.numeroPatente" for="field_numeroPatente">NumeroPatente</label>
+            <input type="text" class="form-control" name="numeroPatente" id="field_numeroPatente"
+                    ng-model="personne.numeroPatente"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.raisonSociale" for="field_raisonSociale">RaisonSociale</label>
+            <input type="text" class="form-control" name="raisonSociale" id="field_raisonSociale"
+                    ng-model="personne.raisonSociale"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="personne.email"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.ville" for="field_ville">Ville</label>
+            <input type="text" class="form-control" name="ville" id="field_ville"
+                    ng-model="personne.ville"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.dateObtentionPermis" for="field_dateObtentionPermis">DateObtentionPermis</label>
+            <input id="field_dateObtentionPermis" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="personne.dateObtentionPermis" is-open="datePickerForDateObtentionPermis.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateObtentionPermisOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="creamApp.personne.numeroPermis" for="field_numeroPermis">NumeroPermis</label>
+            <input type="text" class="form-control" name="numeroPermis" id="field_numeroPermis"
+                    ng-model="personne.numeroPermis"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="creamApp.personne.situationFamiliale" for="field_situationFamiliale">situationFamiliale</label>
+            <select class="form-control" id="field_situationFamiliale" name="situationFamiliale" ng-model="personne.situationFamilialeId" ng-options="refSituationFamiliale.id as refSituationFamiliale.libelle for refSituationFamiliale in refsituationfamiliales">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="creamApp.personne.secteurActivite" for="field_secteurActivite">secteurActivite</label>
+            <select class="form-control" id="field_secteurActivite" name="secteurActivite" ng-model="personne.secteurActiviteId" ng-options="refSecteurActivite.id as refSecteurActivite.libelle for refSecteurActivite in refsecteuractivites">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

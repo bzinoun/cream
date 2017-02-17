@@ -1,0 +1,39 @@
+{
+    "creamApp": {
+        "personne" : {
+            "home": {
+                "title": "Personnes",
+                "createLabel": "Create a new Personne",
+                "createOrEditLabel": "Create or edit a Personne"
+            },
+            "created": "A new Personne is created with identifier {{ param }}",
+            "updated": "A Personne is updated with identifier {{ param }}",
+            "deleted": "A Personne is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Personne {{ id }}?"
+            },
+            "detail": {
+                "title": "Personne"
+            },
+            "nom": "Nom",
+            "numeroCIN": "NumeroCIN",
+            "rc": "Rc",
+            "telephone": "Telephone",
+            "prenom": "Prenom",
+            "civilite": "Civilite",
+            "type": "Type",
+            "titre": "Titre",
+            "dateNaissance": "DateNaissance",
+            "numeroPatente": "NumeroPatente",
+            "raisonSociale": "RaisonSociale",
+            "email": "Email",
+            "ville": "Ville",
+            "prospection": "prospection",
+            "dateObtentionPermis": "DateObtentionPermis",
+            "numeroPermis": "NumeroPermis",
+            "prospection": "Prospection",
+            "situationFamiliale": "SituationFamiliale",
+            "secteurActivite": "SecteurActivite"
+        }
+    }
+}

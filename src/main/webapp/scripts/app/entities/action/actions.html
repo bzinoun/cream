@@ -1,0 +1,78 @@
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-thumb-tack"></i> <span translate="creamApp.action.home.title">Actions</span>
+			</h3>
+		</div>
+		<div class="panel-body">    
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="action.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="creamApp.action.home.createLabel">Create a new Action</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Action</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sujet"><span translate="creamApp.action.sujet">Sujet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="creamApp.action.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateDebut"><span translate="creamApp.action.dateDebut">DateDebut</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateFin"><span translate="creamApp.action.dateFin">DateFin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeAction"><span translate="creamApp.action.typeAction">TypeAction</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user"><span translate="creamApp.action.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tacheSujet"><span translate="creamApp.action.tache">tache</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="action in actions track by action.id">
+                    <td><a ui-sref="action.detail({id:action.id})">{{action.id}}</a></td>
+                    <td>{{action.sujet}}</td>
+                    <td>{{action.description}}</td>
+                        <td>{{action.dateDebut | date:'mediumDate'}}</td>
+                        <td>{{action.dateFin | date:'mediumDate'}}</td>
+                    <td translate="{{'creamApp.TypeAction.' + action.typeAction}}">{{action.typeAction}}</td>
+                    <td>{{action.user}}</td>
+                    <td>
+                        <a ui-sref="tache.detail({id:action.tacheId})">{{action.tacheSujet}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="action.detail({id:action.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="action.edit({id:action.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="action.delete({id:action.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
+</div>
+</div>

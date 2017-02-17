@@ -1,0 +1,23 @@
+{
+    "creamApp": {
+        "refStatutProspection" : {
+            "home": {
+                "title": "RefStatutProspections",
+                "createLabel": "Create a new RefStatutProspection",
+                "createOrEditLabel": "Create or edit a RefStatutProspection"
+            },
+            "created": "A new RefStatutProspection is created with identifier {{ param }}",
+            "updated": "A RefStatutProspection is updated with identifier {{ param }}",
+            "deleted": "A RefStatutProspection is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete RefStatutProspection {{ id }}?"
+            },
+            "detail": {
+                "title": "RefStatutProspection"
+            },
+            "code": "Code",
+            "libelle": "Libelle",
+            "prospection": "Prospection"
+        }
+    }
+}

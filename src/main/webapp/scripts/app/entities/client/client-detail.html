@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="creamApp.client.detail.title">Client</span> {{client.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="creamApp.client.societe">Societe</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{client.societe}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.client.nom">Nom</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{client.nom}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.client.prenom">Prenom</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{client.prenom}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.client.titre">Titre</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{client.titre}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.client.telephone">Telephone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{client.telephone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.client.portable">Portable</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{client.portable}}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

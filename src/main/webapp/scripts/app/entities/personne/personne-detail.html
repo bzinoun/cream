@@ -1,0 +1,164 @@
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="fa fa-user"></i> <span translate="creamApp.personne.detail.title">Personne </span> :  {{personne.nom}} {{personne.prenom}} {{personne.rc}}
+			</h3>
+		</div>
+		<div class="panel-body">    <h2></h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.nom">Nom</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.nom}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.numeroCIN">NumeroCIN</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.numeroCIN}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.rc">Rc</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.rc}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.telephone">Telephone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.telephone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.prenom">Prenom</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.prenom}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.civilite">Civilite</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.civilite}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.type">Type</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'creamApp.TypePersonne.' + personne.type}}">{{personne.type}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.titre">Titre</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.titre}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.dateNaissance">DateNaissance</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.dateNaissance | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.numeroPatente">NumeroPatente</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.numeroPatente}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.raisonSociale">RaisonSociale</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.raisonSociale}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.email">Email</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.email}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.ville">Ville</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.ville}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.dateObtentionPermis">DateObtentionPermis</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.dateObtentionPermis | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.numeroPermis">NumeroPermis</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{personne.numeroPermis}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.situationFamiliale">situationFamiliale</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="refSituationFamiliale.detail({id:personne.situationFamilialeId})">{{personne.situationFamilialeLibelle}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="creamApp.personne.secteurActivite">secteurActivite</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="refSecteurActivite.detail({id:personne.secteurActiviteId})">{{personne.secteurActiviteLibelle}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
+</div>

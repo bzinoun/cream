@@ -1,0 +1,24 @@
+{
+    "creamApp": {
+        "refStatutTache" : {
+            "home": {
+                "title": "RefStatutTaches",
+                "createLabel": "Créer un nouveau RefStatutTache",
+                "createOrEditLabel": "Créer ou éditer un RefStatutTache"
+            },
+            "created": "Un nouveau RefStatutTache a été créé avec l'identifiant {{ param }}",
+            "updated": "Le RefStatutTache avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le RefStatutTache avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le RefStatutTache {{ id }} ?"
+            },
+            "detail": {
+                "title": "RefStatutTache"
+            },
+            "code": "Code",
+            "libelle": "Libelle",
+            "tache": "Tache"
+        }
+    }
+}
+

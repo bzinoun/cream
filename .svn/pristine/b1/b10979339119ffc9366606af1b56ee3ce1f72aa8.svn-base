@@ -1,0 +1,24 @@
+{
+    "creamApp": {
+        "refSituationFamiliale" : {
+            "home": {
+                "title": "RefSituationFamiliales",
+                "createLabel": "Créer un nouveau RefSituationFamiliale",
+                "createOrEditLabel": "Créer ou éditer un RefSituationFamiliale"
+            },
+            "created": "Un nouveau RefSituationFamiliale a été créé avec l'identifiant {{ param }}",
+            "updated": "Le RefSituationFamiliale avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le RefSituationFamiliale avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le RefSituationFamiliale {{ id }} ?"
+            },
+            "detail": {
+                "title": "RefSituationFamiliale"
+            },
+            "code": "Code",
+            "libelle": "Libelle",
+            "personne": "Personne"
+        }
+    }
+}
+

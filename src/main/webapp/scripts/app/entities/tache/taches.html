@@ -1,0 +1,85 @@
+	<div class="box box-success">
+		<div class="box-header">
+			<h3 class="box-title">
+				<i class="fa fa-check"></i> <span translate="creamApp.tache.home.title">Taches</span>
+			</h3>
+			
+							<div class="box-tools">
+					<form name="searchForm" class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control" ng-model="searchQuery"
+								id="searchQuery" placeholder="Search">
+						</div>
+						<button class="btn btn-default" ng-click="search()">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+						<button class="btn btn-success" ui-sref="tache.new">
+							<span class="glyphicon glyphicon-plus"> </span><span
+								translate="creamApp.tache.home.createLabel">Create
+								a new Tache</span>
+						</button>
+					</form>
+
+				</div>
+		</div>
+		<div class="box-body"> 
+    
+    <jh-alert></jh-alert>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sujet"><span translate="creamApp.tache.sujet">Sujet</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="description"><span translate="creamApp.tache.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="dateDebut"><span translate="creamApp.tache.dateDebut">DateDebut</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateFin"><span translate="creamApp.tache.dateFin">DateFin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="type"><span translate="creamApp.tache.type">Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="pieceJointe"><span translate="creamApp.tache.pieceJointe">PieceJointe</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="user"><span translate="creamApp.tache.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prospectionSujet"><span translate="creamApp.tache.prospection">prospection</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statutTacheLibelle"><span translate="creamApp.tache.statutTache">statutTache</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tache in taches track by tache.id">
+                    <td><a ui-sref="tache.detail({id:tache.id})">{{tache.id}}</a></td>
+                    <td>{{tache.sujet}}</td>
+<!--                     <td>{{tache.description}}</td> -->
+                        <td>{{tache.dateDebut | date:'mediumDate'}}</td>
+                        <td>{{tache.dateFin | date:'mediumDate'}}</td>
+                    <td translate="{{'creamApp.TypeTache.' + tache.type}}">{{tache.type}}</td>
+<!--                     <td>{{abbreviate(tache.pieceJointe)}} {{tache.pieceJointeContentType}} {{byteSize(tache.pieceJointe)}}</td> -->
+                    <td>{{tache.user}}</td>
+                    <td>
+                        <a ui-sref="prospection.detail({id:tache.prospectionId})">{{tache.prospectionSujet}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="refStatutTache.detail({id:tache.statutTacheId})">{{tache.statutTacheLibelle}}</a>
+                    </td>
+                    <td>
+                        <button type="submit" ng-hide = "tache.prospectionId"
+                                ui-sref="tache.detail({id:tache.id})"
+                                class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+
+							<button type="submit" ng-show = "tache.prospectionId"
+                                ng-click="goProspectionDetail(tache)"
+                                class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="tache.edit({id:tache.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
+</div>
+</div>
